@@ -461,8 +461,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../add-ons/managed-add-ons/" class="md-nav__link">
-        Amazon EKS Add-ons
+      <a href="../add-ons/argocd/" class="md-nav__link">
+        ArgoCD
       </a>
     </li>
   
@@ -475,8 +475,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../add-ons/argocd/" class="md-nav__link">
-        Argo CD
+      <a href="../add-ons/aws-cloudwatch-metrics/" class="md-nav__link">
+        AWS CloudWatch Metrics
       </a>
     </li>
   
@@ -517,20 +517,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../add-ons/aws-cloudwatch-metrics/" class="md-nav__link">
-        AWS CloudWatch Metrics
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../add-ons/aws-load-balancer-controller/" class="md-nav__link">
         AWS Load Balancer Controller
       </a>
@@ -547,6 +533,20 @@
     <li class="md-nav__item">
       <a href="../add-ons/aws-node-termination-handler/" class="md-nav__link">
         AWS Node Termination Handler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../add-ons/aws-privateca-issuer/" class="md-nav__link">
+        aws-privateca-issuer
       </a>
     </li>
   
@@ -616,7 +616,7 @@
   
     <li class="md-nav__item">
       <a href="../add-ons/fargate-fluent-bit/" class="md-nav__link">
-        Fargate Fluent Bit
+        Fargate fluent bit
       </a>
     </li>
   
@@ -658,7 +658,35 @@
   
     <li class="md-nav__item">
       <a href="../add-ons/kube-state-metrics/" class="md-nav__link">
-        Kube State Metrics
+        Kube-State-Metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../add-ons/kubernetes-dashboard/" class="md-nav__link">
+        Kubernetes Dashboard
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../add-ons/managed-add-ons/" class="md-nav__link">
+        Amazon EKS Add-ons
       </a>
     </li>
   
@@ -728,7 +756,7 @@
   
     <li class="md-nav__item">
       <a href="../add-ons/tetrate-istio/" class="md-nav__link">
-        Tetrate Istio
+        Tetrate Istio Distro
       </a>
     </li>
   
@@ -770,7 +798,7 @@
   
     <li class="md-nav__item">
       <a href="../add-ons/vpa/" class="md-nav__link">
-        VPA
+        Vertical Pod Autoscaler
       </a>
     </li>
   
@@ -784,7 +812,7 @@
   
     <li class="md-nav__item">
       <a href="../add-ons/yunikorn/" class="md-nav__link">
-        YuniKorn
+        Apache YuniKorn
       </a>
     </li>
   
@@ -1022,7 +1050,7 @@ Each Node Group can have dedicated IAM role, Launch template and Security Group 
 <h2 id="additional-iam-roles-users-and-accounts">Additional IAM Roles, Users and Accounts<a class="headerlink" href="#additional-iam-roles-users-and-accounts" title="Permanent link">&para;</a></h2>
 <p>Access to EKS cluster using AWS IAM entities is enabled by the <a href="https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html">AWS IAM Authenticator</a> for Kubernetes, which runs on the Amazon EKS control plane.
 The authenticator gets its configuration information from the <code>aws-auth</code> <a href="https://kubernetes.io/docs/concepts/configuration/configmap/">ConfigMap</a>.</p>
-<p>The following config grants additional AWS IAM users or roles the ability to interact with your cluster. However, the best practice is to leverage <a href="https://aws.github.io/aws-eks-best-practices/security/docs/multitenancy/">soft-multitenancy</a> with the help of <a href="https://github.com/aws-ia/terraform-aws-eks-blueprints/blob/main/docs/teams.md">Teams</a> module. Teams feature helps to manage users with dedicated namespaces, RBAC, IAM roles and register users with <code>aws-auth</code> to provide access to the EKS Cluster.</p>
+<p>The following config grants additional AWS IAM users or roles the ability to interact with your cluster. However, the best practice is to leverage <a href="https://aws.github.io/aws-eks-best-practices/security/docs/multitenancy/">soft-multitenancy</a> with the help of <a href="../teams/">Teams</a> module. Teams feature helps to manage users with dedicated namespaces, RBAC, IAM roles and register users with <code>aws-auth</code> to provide access to the EKS Cluster.</p>
 <p>The below example demonstrates adding additional IAM Roles, IAM Users and Accounts using EKS Blueprints module</p>
 <div class="highlight"><pre><span></span><code>module &quot;eks_blueprints&quot; {
   source = &quot;github.com/aws-ia/terraform-aws-eks-blueprints&quot;
