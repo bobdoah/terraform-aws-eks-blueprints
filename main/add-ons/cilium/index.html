@@ -13,7 +13,7 @@
     
     
       
-        <title>Cluster Autoscaler - Amazon EKS Blueprints for Terraform</title>
+        <title>Cilium - Amazon EKS Blueprints for Terraform</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cluster-autoscaler" class="md-skip">
+        <a href="#cilium" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Cluster Autoscaler
+              Cilium
             
           </span>
         </div>
@@ -602,20 +602,6 @@
               
   
   
-  
-    <li class="md-nav__item">
-      <a href="../cilium/" class="md-nav__link">
-        Cilium
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
     
   
   
@@ -628,12 +614,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Cluster Autoscaler
+          Cilium
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Cluster Autoscaler
+        Cilium
       </a>
       
         
@@ -675,6 +661,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cluster-autoscaler/" class="md-nav__link">
+        Cluster Autoscaler
+      </a>
     </li>
   
 
@@ -1311,27 +1311,39 @@
             <article class="md-content__inner md-typeset">
               
                 
-  <a href="https://github.com/aws-ia/terraform-aws-eks-blueprints/edit/main/docs/add-ons/cluster-autoscaler.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/aws-ia/terraform-aws-eks-blueprints/edit/main/docs/add-ons/cilium.md" title="Edit this page" class="md-content__button md-icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
 
-<h1 id="cluster-autoscaler">Cluster Autoscaler<a class="headerlink" href="#cluster-autoscaler" title="Permanent link">&para;</a></h1>
-<p>Cluster Autoscaler is a tool that automatically adjusts the number of nodes in your cluster when:</p>
-<ul>
-<li>Pods fail due to insufficient resources, or</li>
-<li>Pods are rescheduled onto other nodes due to being in nodes that are underutilized for an extended period of time.</li>
-</ul>
-<p>The <a href="https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler">Cluster Autoscaler</a> add-on adds support for Cluster Autoscaler to an EKS cluster. It is typically installed as a <strong>Deployment</strong> in your cluster. It uses leader election to ensure high availability, but scaling is one done via one replica at a time.</p>
+<h1 id="cilium">Cilium<a class="headerlink" href="#cilium" title="Permanent link">&para;</a></h1>
+<p>Cilium is open source software for transparently securing the network connectivity between application services deployed using Linux container management platforms like Docker and Kubernetes.</p>
+<p>Cilium can be set up in two manners:
+- In combination with the <code>Amazon VPC CNI plugin</code>. In this hybrid mode, the AWS VPC CNI plugin is responsible for setting up the virtual network devices as well as for IP address management (IPAM) via ENIs.
+After the initial networking is setup for a given pod, the Cilium CNI plugin is called to attach eBPF programs to the network devices set up by the AWS VPC CNI plugin in order to enforce network policies, perform load-balancing and provide encryption.
+Read the installation instruction <a href="https://docs.cilium.io/en/stable/gettingstarted/cni-chaining-aws-cni/#chaining-aws-cni">here</a>
+- As a replacement of <code>Amazon VPC CNI</code>,  read the complete installation guideline <a href="https://docs.cilium.io/en/stable/gettingstarted/k8s-install-helm/">here</a></p>
+<p>For complete project documentation, please visit the <a href="https://docs.cilium.io/en/stable/">Cilium documentation site</a>.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/aws-ia/terraform-aws-eks-blueprints/tree/main/modules/kubernetes-addons/cluster-autoscaler">Cluster Autoscaler</a> can be deployed by enabling the add-on via the following.</p>
-<div class="highlight"><pre><span></span><code>enable_cluster_autoscaler = true
+<p>By Cilium in combination with the <code>Amazon VPC CNI plugin</code> by enabling the add-on via the following.</p>
+<div class="highlight"><pre><span></span><code>enable_cilium = true
 </code></pre></div>
+<p>Deploy Cilium with custom <code>values.yaml</code></p>
+<div class="highlight"><pre><span></span><code>  # Optional Map value; pass cilium-values.yaml from consumer module
+   cilium_helm_config = {
+    name       = &quot;cilium&quot;                                               # (Required) Release name.
+    repository = &quot;https://helm.cilium.io/&quot;                              # (Optional) Repository URL where to locate the requested chart.
+    chart      = &quot;cilium&quot;                                               # (Required) Chart name to be installed.
+    version    = &quot;1.12.1&quot;                                               # (Optional) Specify the exact chart version to install. If this is not specified, it defaults to the version set within default_helm_config: https://github.com/aws-ia/terraform-aws-eks-blueprints/blob/main/modules/kubernetes-addons/cilium/locals.tf
+    values = [templatefile(&quot;${path.module}/cilium-values.yaml&quot;, {})]
+  }
+</code></pre></div>
+<p>Refer to the <a href="https://github.com/cilium/cilium/blob/master/install/kubernetes/cilium/values.yaml">cilium default values file</a> for complete values options for the chart</p>
 <h3 id="gitops-configuration">GitOps Configuration<a class="headerlink" href="#gitops-configuration" title="Permanent link">&para;</a></h3>
 <p>The following properties are made available for use when managing the add-on via GitOps.</p>
-<div class="highlight"><pre><span></span><code>clusterAutoscaler = {
-  enable = true
+<div class="highlight"><pre><span></span><code>cilium = {
+  enable  = true
 }
 </code></pre></div>
 
@@ -1349,7 +1361,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../cilium/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Cilium" rel="prev">
+        <a href="../chaos-mesh/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chaos Mesh" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1358,20 +1370,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Cilium
+              Chaos Mesh
             </div>
           </div>
         </a>
       
       
         
-        <a href="../cluster-proportional-autoscaler/" class="md-footer__link md-footer__link--next" aria-label="Next: Horizontal cluster-proportional-autoscaler container" rel="next">
+        <a href="../cluster-autoscaler/" class="md-footer__link md-footer__link--next" aria-label="Next: Cluster Autoscaler" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Horizontal cluster-proportional-autoscaler container
+              Cluster Autoscaler
             </div>
           </div>
           <div class="md-footer__button md-icon">
