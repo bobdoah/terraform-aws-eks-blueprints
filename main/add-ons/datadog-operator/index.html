@@ -9,7 +9,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.2">
+      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.3.2">
     
     
       
@@ -576,6 +576,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../cert-manager-csi-driver/" class="md-nav__link">
+        cert-manager-csi-driver
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../cert-manager/" class="md-nav__link">
         cert-manager
       </a>
@@ -897,6 +911,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../kyverno/" class="md-nav__link">
+        Kyverno
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../local-volume-provisioner/" class="md-nav__link">
+        Local volume provisioner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../managed-add-ons/" class="md-nav__link">
         Amazon EKS Add-ons
       </a>
@@ -927,6 +969,34 @@
     <li class="md-nav__item">
       <a href="../nginx/" class="md-nav__link">
         Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nvidia-device-plugin/" class="md-nav__link">
+        NVIDIA Device Plugin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../portworx/" class="md-nav__link">
+        Portworx add-on for EKS Blueprints
       </a>
     </li>
   
@@ -1297,23 +1367,7 @@
 <p>The Datadog Operator can be deployed by enabling the add-on via the following.</p>
 <div class="highlight"><pre><span></span><code>enable_datadog_operator = true
 </code></pre></div>
-<p>An API key is required, this can be passed as a variable:</p>
-<div class="highlight"><pre><span></span><code>datadog_api_key = &lt;key&gt;
-</code></pre></div>
-<p>or by creating a secret external to the Terraform and passing in the secret name:</p>
-<div class="highlight"><pre><span></span><code>datadog_operator_helm_config = {
-  datadog_agent = {
-    spec = {
-      credentials = {
-        apiSecret = {
-          secretName = &quot;&lt;secret-name&gt;&quot;
-          keyName = &quot;&lt;secret-key-name&gt;&quot;
-        }      
-      }
-    }
-  }
-}
-</code></pre></div>
+<p>Once the operator is provisioned, the Datadog Agent can be deployed by creating a <code>DatadogAgent</code> resource and supplying an API key.</p>
 
               
             </article>
