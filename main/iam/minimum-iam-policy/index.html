@@ -254,7 +254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../node-groups.md" class="md-nav__link">
+      <a href="../../node-groups/" class="md-nav__link">
         Node Groups
       </a>
     </li>
@@ -491,6 +491,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../add-ons/argo-workflows/" class="md-nav__link">
+        Argo Workflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../add-ons/argocd/" class="md-nav__link">
         ArgoCD
       </a>
@@ -715,6 +729,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../add-ons/consul/" class="md-nav__link">
+        Consul
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../add-ons/crossplane/" class="md-nav__link">
         Crossplane
       </a>
@@ -815,6 +843,20 @@
     <li class="md-nav__item">
       <a href="../../add-ons/grafana/" class="md-nav__link">
         Grafana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../add-ons/kafka/" class="md-nav__link">
+        Strimzi Operator for Apache Kafka
       </a>
     </li>
   
@@ -1109,6 +1151,20 @@
     <li class="md-nav__item">
       <a href="../../add-ons/tetrate-istio/" class="md-nav__link">
         Tetrate Istio Distro
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../add-ons/thanos/" class="md-nav__link">
+        Thanos
       </a>
     </li>
   
@@ -1444,6 +1500,7 @@
 <span class="w">              </span><span class="s">&quot;ec2:DescribeNetworkInterfaces&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
 <span class="w">              </span><span class="s">&quot;ec2:DescribeRouteTables&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
 <span class="w">              </span><span class="s">&quot;ec2:DescribeSecurityGroups&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;ec2:DescribeSecurityGroupRules&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
 <span class="w">              </span><span class="s">&quot;ec2:DescribeSubnets&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
 <span class="w">              </span><span class="s">&quot;ec2:DescribeTags&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
 <span class="w">              </span><span class="s">&quot;ec2:DescribeVpcAttribute&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
@@ -1470,6 +1527,7 @@
 <span class="w">              </span><span class="s">&quot;eks:DescribeCluster&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
 <span class="w">              </span><span class="s">&quot;eks:DescribeFargateProfile&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
 <span class="w">              </span><span class="s">&quot;eks:DescribeNodegroup&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;eks:TagResource&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
 <span class="w">              </span><span class="s">&quot;elasticfilesystem:CreateFileSystem&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
 <span class="w">              </span><span class="s">&quot;elasticfilesystem:CreateMountTarget&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
 <span class="w">              </span><span class="s">&quot;elasticfilesystem:DeleteFileSystem&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
@@ -1511,7 +1569,10 @@
 <span class="w">              </span><span class="s">&quot;iam:ListRolePolicies&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
 <span class="w">              </span><span class="s">&quot;iam:PassRole&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
 <span class="w">              </span><span class="s">&quot;iam:RemoveRoleFromInstanceProfile&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;iam:TagOpenIDConnectProvider&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
 <span class="w">              </span><span class="s">&quot;iam:TagInstanceProfile&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;iam:TagPolicy&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot;iam:TagRole&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
 <span class="w">              </span><span class="s">&quot;iam:UpdateAssumeRolePolicy&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
 <span class="w">              </span><span class="s">&quot;kms:CreateAlias&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
 <span class="w">              </span><span class="s">&quot;kms:CreateKey&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
@@ -1601,7 +1662,7 @@ After generating the policy for each example, we merge the generated policies in
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../../core-concepts/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Core Concepts" rel="prev">
+        <a href="../../node-groups/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Node Groups" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1610,7 +1671,7 @@ After generating the policy for each example, we merge the generated policies in
               <span class="md-footer__direction">
                 Previous
               </span>
-              Core Concepts
+              Node Groups
             </div>
           </div>
         </a>
